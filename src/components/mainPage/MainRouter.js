@@ -1,26 +1,36 @@
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import OrderRouter from "../order/OrderRouter";
+import { MealRouter } from "../meal";
+import { TableRouter } from "../table";
+import { WaiterRouter } from "../waiter";
+import style from "./MainRouter.module.css";
 
-const MenuRouter = () => {
+const MainRouter = () => {
   return (
     <>
-      <li>
-        <Link to="/menu/order">Добавить заказ</Link>
-      </li>
-      <li>
-        <Link to="/menu/table">Добавить стол</Link>
-      </li>
-      <li>
-        <Link to="/menu/waiter">Добавить abwf</Link>
-      </li>
+      <nav className={style.nav_box}>
+        <ul className={style.nav_list}>
+          <li className={style.nav_item}>
+            <Link to="/order-craft/meal">Choose meals</Link>
+          </li>
+          <li className={style.nav_item}>
+            <Link to="/order-craft/table">Reserve a Table</Link>
+          </li>
+          <li className={style.nav_item}>
+            <Link to="/order-craft/waiter">Service Assistance</Link>
+          </li>
+        </ul>
+      </nav>
 
       <Routes>
-        {/* <Route path="/" element={<Menu />} /> */}
-        <Route path="/order/*" element={<OrderRouter />} />
+        {/* <Route path="/" element={<MainRouter />} /> */}
+        <Route path="/meal/*" element={<MealRouter />} />
+        <Route path="/table/*" element={<TableRouter />} />
+        <Route path="/waiter/*" element={<WaiterRouter />} />
+        {/* <Route path="/order/*" element={<OrderRouter />} /> */}
       </Routes>
     </>
   );
 };
 
-export default MenuRouter;
+export default MainRouter;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
+import { Arrow } from "./";
 import style from "./MainPage.module.css";
-import Arrow from "./Arrow";
 
 const MainPage = () => {
   return (
@@ -8,8 +8,8 @@ const MainPage = () => {
       <h1 className={style.title}>Order Craft</h1>
       <nav className={style.main_item}>
         <ul>
-          <li>
-            <Link to="/menu">Let's create your order</Link>
+          <li className={style.list_item}>
+            <Link to="/order-craft">Let's create your order</Link>
           </li>
         </ul>
         <Arrow />

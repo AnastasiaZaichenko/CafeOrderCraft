@@ -1,4 +1,4 @@
-li {
+.list_item {
     list-style: none;
 }
 
@@ -20,7 +20,7 @@ a {
     margin: 0;
     padding: 30px;
     font-size: 48px;
-    color: #28211f
+    color: #28211f;
 }
 
 .main_item {

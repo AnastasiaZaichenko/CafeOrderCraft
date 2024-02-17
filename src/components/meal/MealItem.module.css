@@ -1,0 +1,22 @@
+.meal_item {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+
+}
+
+.meal_box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+}
+
+.meal_img_box{
+    width: 200px;
+}
+
+.meal_img{
+    width: 100%;
+}

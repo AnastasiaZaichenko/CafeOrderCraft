@@ -1,4 +1,4 @@
-const TableForm = () => {
+const ChooseTable = () => {
   return (
     <div>
       <h1>Добро пожаловать на ntq,k страницу!</h1>
@@ -8,4 +8,4 @@ const TableForm = () => {
   );
 };
 
-export default TableForm;
+export default ChooseTable;
