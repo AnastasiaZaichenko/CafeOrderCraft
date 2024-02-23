@@ -27,4 +27,21 @@ export class MealApi {
       throw new Error("Can not delete from server");
     });
   }
+  static create(meal) {
+    return MealApi.request("", "POST", meal).catch(() => {
+      throw new Error("Can not create on server");
+    });
+  }
+
+  static getOneEl(id) {
+    return MealApi.request(id).catch(() => {
+      throw new Error("Can not get element from server");
+    });
+  }
+
+  static update(id, meal) {
+    return MealApi.request(id, "PUT", meal).catch(() => {
+      throw new Error("Can not update element on server");
+    });
+  }
 }

@@ -1,20 +1,28 @@
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { removeTable } from "../../store/actions/table";
+import { removeTable, clearTableEdit } from "../../store/actions/table";
+import { ButtonItemEditDel, ButtonItemAddToOrder } from "../ui";
 
-const TableItemBtn = ({ table }) => {
+const TableItemBtn = ({ table, isEmployee, isGuest }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteBtnTable = () => {
     dispatch(removeTable(table.id));
   };
+
+  const editBtnTable = () => {
+    navigate(`/order-craft/table/${table.id}/edit`);
+    dispatch(clearTableEdit());
+  };
+
   return (
-    <div>
-      {/* <button>
-        <Link to="/order-craft/:id/edit"></Link>
-      </button> */}
-      <button onClick={deleteBtnTable}>Delete</button>
-    </div>
+    <>
+      {isEmployee && (
+        <ButtonItemEditDel deleteBtn={deleteBtnTable} editBtn={editBtnTable} />
+      )}
+      {isGuest && <ButtonItemAddToOrder />}
+    </>
   );
 };
 

@@ -1,4 +1,11 @@
-import { ACTION_SET_MEAL_LIST, ACTION_MEAL_REMOVE } from "../actions/meal";
+import {
+  ACTION_SET_MEAL_LIST,
+  ACTION_MEAL_REMOVE,
+  ACTION_MEAL_CREATE,
+  ACTION_MEAL_CLEAR_EDIT,
+  ACTION_MEAL_EDIT,
+  ACTION_MEAL_UPDATE_LIST,
+} from "../actions/meal";
 
 export const DEFAULT_MEAL = {
   name: "",
@@ -24,6 +31,18 @@ export default function mealReducer(state = initialState, { type, payload }) {
         ...state,
         list: newList,
       };
+    case ACTION_MEAL_CREATE:
+      return { ...state, list: [...state.list, { payload }] };
+    case ACTION_MEAL_CLEAR_EDIT:
+      return { ...state, mealEdit: DEFAULT_MEAL };
+
+    case ACTION_MEAL_EDIT:
+      return { ...state, mealEdit: payload };
+    case ACTION_MEAL_UPDATE_LIST:
+      const updateList = state.list.map((el) =>
+        el.id === payload.id ? payload : el
+      );
+      return { ...state, list: updateList, mealEdit: DEFAULT_MEAL };
     default:
       return state;
   }

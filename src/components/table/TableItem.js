@@ -1,10 +1,10 @@
 import { TableItemBtn } from "./";
 
-const TableItem = ({ table }) => {
+const TableItem = ({ table, isEmployee, isGuest }) => {
   return (
     <li>
       <p> {table.number}</p>
-      <TableItemBtn table={table} />
+      <TableItemBtn table={table} isEmployee={isEmployee} isGuest={isGuest} />
     </li>
   );
 };

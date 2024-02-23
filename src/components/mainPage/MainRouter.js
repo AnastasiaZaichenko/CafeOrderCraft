@@ -27,6 +27,7 @@ const MainRouter = () => {
         <Route path="/meal/*" element={<MealRouter />} />
         <Route path="/table/*" element={<TableRouter />} />
         <Route path="/waiter/*" element={<WaiterRouter />} />
+        {/* <Route path="/*" element={<NotFound />} /> */}
         {/* <Route path="/order/*" element={<OrderRouter />} /> */}
       </Routes>
     </>

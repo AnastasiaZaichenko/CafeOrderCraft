@@ -27,4 +27,22 @@ export class TableApi {
       throw new Error("Can not delete from server");
     });
   }
+
+  static create(table) {
+    return TableApi.request("", "POST", table).catch(() => {
+      throw new Error("Can not create on server");
+    });
+  }
+
+  static getOneEl(id) {
+    return TableApi.request(id).catch(() => {
+      throw new Error("Can not get element from server");
+    });
+  }
+
+  static update(id, table) {
+    return TableApi.request(id, "PUT", table).catch(() => {
+      throw new Error("Can not update element on server");
+    });
+  }
 }

@@ -22,9 +22,27 @@ export class WaiterApi {
     });
   }
 
+  static getOneEl(id) {
+    return WaiterApi.request(id).catch(() => {
+      throw new Error("Can not get element from server");
+    });
+  }
+
   static delete(id) {
     return WaiterApi.request(id, "DELETE").catch(() => {
-      throw new Error("Can not delete from server");
+      throw new Error("Can not delete element from server");
+    });
+  }
+
+  static create(waiter) {
+    return WaiterApi.request("", "POST", waiter).catch(() => {
+      throw new Error("Can not create element on server");
+    });
+  }
+
+  static update(id, waiter) {
+    return WaiterApi.request(id, "PUT", waiter).catch(() => {
+      throw new Error("Can not update element on server");
     });
   }
 }

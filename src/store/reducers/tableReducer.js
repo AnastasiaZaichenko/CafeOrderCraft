@@ -1,4 +1,11 @@
-import { ACTION_SET_TABLE_LIST, ACTION_TABLE_REMOVE } from "../actions/table";
+import {
+  ACTION_SET_TABLE_LIST,
+  ACTION_TABLE_REMOVE,
+  ACTION_TABLE_CREATE,
+  ACTION_TABLE_EDIT,
+  ACTION_TABLE_EDIT_CLEAR,
+  ACTION_TABLE_UPDATE_LIST,
+} from "../actions/table";
 
 export const DEFAULT_TABLE = {
   number: "",
@@ -21,6 +28,25 @@ export default function tableReducer(state = initialState, { type, payload }) {
         ...state,
         list: newList,
       };
+    case ACTION_TABLE_CREATE:
+      return {
+        ...state,
+        list: [...state.list, { ...payload }],
+      };
+    case ACTION_TABLE_EDIT:
+      return {
+        ...state,
+        tableEdit: payload,
+      };
+    case ACTION_TABLE_EDIT_CLEAR:
+      return { ...state, tableEdit: DEFAULT_TABLE };
+
+    case ACTION_TABLE_UPDATE_LIST:
+      const updateList = state.list.map((el) =>
+        el.id === payload.id ? payload : el
+      );
+      return { ...state, list: updateList, tableEdit: DEFAULT_TABLE };
+
     default:
       return state;
   }
