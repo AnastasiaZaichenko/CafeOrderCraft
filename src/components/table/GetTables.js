@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { selectTables } from "../../store/selectors/index";
 import { fetchTables, clearTableEdit } from "../../store/actions/table";
-import { ButtonsWhoYouAre } from "../ui";
+import { ButtonsWhoYouAre, ButtonAddNewItem, ButtonTakeaway } from "../ui";
 import { TableItem } from "./";
+import style from "./GetTables.module.css";
 
 const GetTables = () => {
   const list = useSelector(selectTables);
@@ -39,22 +39,26 @@ const GetTables = () => {
     dispatch(clearTableEdit());
   };
 
+  const path = "/order-craft/table/create";
+  const word = "table";
+
   return (
     <>
       <div>
         <ButtonsWhoYouAre
           onEmployeeBtn={onEmployeeBtn}
           onGuestBtn={onGuestBtn}
+          isEmployee={isEmployee}
+          isGuest={isGuest}
         />
+        {isGuest && <ButtonTakeaway />}
 
         {isEmployee && (
-          <button onClick={clear}>
-            <Link to="/order-craft/table/create">Create </Link>
-          </button>
+          <ButtonAddNewItem clear={clear} path={path} word={word} />
         )}
       </div>
 
-      <ul>{tableList}</ul>
+      <ul className={style.table_list}>{tableList}</ul>
     </>
   );
 };

@@ -1,0 +1,12 @@
+.table_list{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+/* .table_list li:nth-child(even) {
+    background-color: rgba(199, 212, 185, 0.5); 
+}  */
+

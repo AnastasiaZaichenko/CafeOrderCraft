@@ -7,7 +7,7 @@ const MealItem = ({ meal, isEmployee, isGuest }) => {
         <img className={style.meal_img} src={meal.image} alt={meal.name} />
       </div>
       <div className={style.meal_box}>
-        <h3 className={style.meal_item}>{meal.name}</h3>
+        <h3 className={style.meal_title}>{meal.name}</h3>
         <p>{meal.description}</p>
         <p>{meal.price}</p>
       </div>

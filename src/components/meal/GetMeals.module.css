@@ -1,3 +1,5 @@
-.meal_page{ 
-    background-color: rgba(255, 255, 255, 0.6); 
-}
+.meal_list li:nth-child(even) {
+    background-color: rgba(199, 212, 185, 0.5); 
+
+} 
+

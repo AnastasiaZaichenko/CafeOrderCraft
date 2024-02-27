@@ -1,7 +1,8 @@
+import style from "./ButtonItemAddToOrder.module.css";
 const ButtonItemAddToOrder = () => {
   return (
-    <div>
-      <button>Add to your order</button>
+    <div className={style.btn_addNewItem_box}>
+      <button className={style.btn_addNewItem}>Add to your order</button>
     </div>
   );
 };

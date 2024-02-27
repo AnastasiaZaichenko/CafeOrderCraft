@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { selectWaiter } from "../../store/selectors";
 import { fetchWaiters } from "../../store/actions/waiter";
 import { WaiterItem } from "./";
 import { clearWaiterEdit } from "../../store/actions/waiter";
-import { ButtonsWhoYouAre } from "../ui";
+import { ButtonsWhoYouAre, ButtonAddNewItem, ButtonTakeaway } from "../ui";
+import style from "./GetWaiters.module.css";
 
 const GetWaiters = () => {
   const list = useSelector(selectWaiter);
@@ -40,20 +40,24 @@ const GetWaiters = () => {
     dispatch(clearWaiterEdit());
   };
 
+  const path = "/order-craft/waiter/create";
+  const word = "waiter";
+
   return (
     <>
       <div>
         <ButtonsWhoYouAre
           onEmployeeBtn={onEmployeeBtn}
           onGuestBtn={onGuestBtn}
+          isEmployee={isEmployee}
+          isGuest={isGuest}
         />
+        {isGuest && <ButtonTakeaway />}
         {isEmployee && (
-          <button onClick={clear}>
-            <Link to="/order-craft/waiter/create">Create </Link>
-          </button>
+          <ButtonAddNewItem clear={clear} path={path} word={word} />
         )}
       </div>
-      <ul>{waiterList}</ul>
+      <ul className={style.waiter_list}>{waiterList}</ul>
     </>
   );
 };

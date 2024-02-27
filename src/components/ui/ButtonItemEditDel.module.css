@@ -1,0 +1,37 @@
+.btn_ed_del_box{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+.btn_edit{
+    padding: 10px 70px;
+    /* border: 1px solid #c7d4b9;
+    border-radius: 3px;
+    color:#c7d4b9; */
+       border: 1px solid  #28211f;
+    color: #28211f;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); 
+}
+.btn_edit:hover{
+    background-color: #c7d4b9;
+    color: white;
+    border: 1px solid  white
+}
+
+.btn_delete{
+    padding: 10px 70px;
+    border-radius: 3px;
+    border: 1px solid  #28211f;
+    color: #28211f;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); 
+} 
+
+.btn_delete:hover{
+    background-color:  #28211f;
+    color: white;
+    border: 1px solid  white
+}

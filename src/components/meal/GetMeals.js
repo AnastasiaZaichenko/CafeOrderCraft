@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { fetchMeals, clearTableEdit } from "../../store/actions/meal";
 import { selectMeals } from "../../store/selectors";
-import { ButtonsWhoYouAre } from "../ui";
+import { ButtonsWhoYouAre, ButtonAddNewItem } from "../ui";
 import { MealItem } from "./";
 import style from "./GetMeals.module.css";
 
@@ -13,6 +12,7 @@ const GetMeals = () => {
 
   const [isEmployee, setIsEmployee] = useState(false);
   const [isGuest, setIsGuest] = useState(false);
+
   useEffect(() => {
     dispatch(fetchMeals());
   }, [dispatch]);
@@ -39,17 +39,21 @@ const GetMeals = () => {
     />
   ));
 
+  const path = "/order-craft/meal/create";
+  const word = "meal";
+
   return (
     <>
-      <ButtonsWhoYouAre onEmployeeBtn={onEmployeeBtn} onGuestBtn={onGuestBtn} />
-      <div>
-        {isEmployee && (
-          <button onClick={clear}>
-            <Link to="/order-craft/meal/create">Create</Link>
-          </button>
-        )}
-      </div>
-      <ul className={style.meal_page}>{mealList}</ul>
+      <ButtonsWhoYouAre
+        onEmployeeBtn={onEmployeeBtn}
+        onGuestBtn={onGuestBtn}
+        isEmployee={isEmployee}
+        isGuest={isGuest}
+      />
+
+      {isEmployee && <ButtonAddNewItem clear={clear} path={path} word={word} />}
+
+      <ul className={style.meal_list}>{mealList}</ul>
     </>
   );
 };

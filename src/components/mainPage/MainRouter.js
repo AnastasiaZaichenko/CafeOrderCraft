@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { MealRouter } from "../meal";
@@ -6,19 +7,34 @@ import { WaiterRouter } from "../waiter";
 import style from "./MainRouter.module.css";
 
 const MainRouter = () => {
+  const [activeItem, setActiveItem] = useState(null);
+
+  const handleItemClick = (index) => {
+    setActiveItem(index);
+  };
+
+  const menuItems = [
+    { label: "Choose meals", path: "/order-craft/meal" },
+    { label: "Reserve a Table", path: "/order-craft/table" },
+    { label: "Service Assistance", path: "/order-craft/waiter" },
+  ];
+
   return (
     <>
       <nav className={style.nav_box}>
         <ul className={style.nav_list}>
-          <li className={style.nav_item}>
-            <Link to="/order-craft/meal">Choose meals</Link>
-          </li>
-          <li className={style.nav_item}>
-            <Link to="/order-craft/table">Reserve a Table</Link>
-          </li>
-          <li className={style.nav_item}>
-            <Link to="/order-craft/waiter">Service Assistance</Link>
-          </li>
+          {menuItems.map((item, index) => (
+            <li
+              key={index}
+              className={`${style.nav_item} ${
+                activeItem === index ? style.active : ""
+              }`}
+            >
+              <Link to={item.path} onClick={() => handleItemClick(index)}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
