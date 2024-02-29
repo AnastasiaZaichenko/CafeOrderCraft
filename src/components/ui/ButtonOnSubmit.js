@@ -1,7 +1,11 @@
 const ButtonOnSubmit = ({ onSubmit }) => {
   return (
     <div>
-      <button onClick={onSubmit}> Create </button>;
+      <button onClick={onSubmit} type="button">
+        {" "}
+        Create{" "}
+      </button>
+      ;
     </div>
   );
 };

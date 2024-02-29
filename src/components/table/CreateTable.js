@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { save, fetchOneTable } from "../../store/actions/table";
 import { selectTableEdit } from "../../store/selectors/index";
 import { ButtonOnSubmit, Loading, ModalSaccecfullyCompleted } from "../ui";
+import { schemaForValidationTable } from "../ui/ValidationSchemes";
 
 const CreateTable = () => {
   let { id } = useParams();
@@ -11,7 +14,18 @@ const CreateTable = () => {
   const navigate = useNavigate();
   const tableEdit = useSelector(selectTableEdit);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [number, setTableNumber] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      number: tableEdit?.number,
+    },
+    resolver: yupResolver(schemaForValidationTable),
+  });
 
   useEffect(() => {
     if (id && !tableEdit?.id) {
@@ -21,21 +35,14 @@ const CreateTable = () => {
 
   useEffect(() => {
     if (tableEdit?.number !== undefined) {
-      setTableNumber(tableEdit.number);
-    } else {
-      setTableNumber("");
+      setValue("number", tableEdit.number);
     }
-  }, [tableEdit]);
+  }, [tableEdit, setValue]);
 
-  const onTableChange = (e) => {
-    setTableNumber(e.target.value);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     const table = {
       ...tableEdit,
-      number,
+      number: data.number,
     };
     dispatch(save(table));
     setIsModalOpen(true);
@@ -52,12 +59,19 @@ const CreateTable = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="table">Table №</label>
-        <input id="table" type="text" value={number} onChange={onTableChange} />
+        <input id="table" type="text" {...register("number")} />
+        <p> {errors.number?.message}</p>
       </form>
-      <ButtonOnSubmit onSubmit={onSubmit} />
+      <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
+
       {isModalOpen && <ModalSaccecfullyCompleted closeModal={closeModal} />}
+      {!isModalOpen && (
+        <div>
+          <button onClick={closeModal}>Return</button>
+        </div>
+      )}
     </div>
   );
 };
