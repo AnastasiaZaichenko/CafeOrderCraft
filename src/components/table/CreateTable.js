@@ -5,8 +5,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { save, fetchOneTable } from "../../store/actions/table";
 import { selectTableEdit } from "../../store/selectors/index";
-import { ButtonOnSubmit, Loading, ModalSaccecfullyCompleted } from "../ui";
+import {
+  ButtonOnSubmit,
+  Loading,
+  ModalSaccecfullyCompleted,
+  ButtonReturn,
+} from "../ui";
 import { schemaForValidationTable } from "../ui/ValidationSchemes";
+import style from "./CreateTable.module.css";
 
 const CreateTable = () => {
   let { id } = useParams();
@@ -58,21 +64,31 @@ const CreateTable = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="table">Table №</label>
-        <input id="table" type="text" {...register("number")} />
-        <p> {errors.number?.message}</p>
-      </form>
-      <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
+    <>
+      <div
+        className={`${style.form_table_box} ${
+          isModalOpen ? style.transparent : ""
+        }`}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="table">Table №</label>
+          <input id="table" type="text" {...register("number")} />
+          <p> {errors.number?.message}</p>
+        </form>
 
-      {isModalOpen && <ModalSaccecfullyCompleted closeModal={closeModal} />}
-      {!isModalOpen && (
-        <div>
-          <button onClick={closeModal}>Return</button>
+        <div
+          className={`${style.btn_create_return_table_box} ${
+            isModalOpen ? style.btn_hidden : ""
+          }`}
+        >
+          <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
+          {!isModalOpen && (
+            <ButtonReturn closeModal={closeModal}>Return</ButtonReturn>
+          )}
         </div>
-      )}
-    </div>
+      </div>
+      {isModalOpen && <ModalSaccecfullyCompleted closeModal={closeModal} />}
+    </>
   );
 };
 

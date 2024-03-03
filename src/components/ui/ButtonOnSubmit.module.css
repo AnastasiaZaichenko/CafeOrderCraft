@@ -1,0 +1,16 @@
+.btn_create_box{}
+.btn_create{
+    padding: 10px 70px;
+    border: 2px solid  grey;
+    color: #28211f;
+    border-radius: 3px;
+    background-color: #c7d4b9;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); 
+}
+
+
+.btn_create:hover{
+    background-color: white;
+    color: #28211f;
+    border: 2px solid  grey;
+}

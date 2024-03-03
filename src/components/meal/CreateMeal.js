@@ -5,8 +5,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { save, fetchOneMeal } from "../../store/actions/meal";
 import { selectEditMeal } from "../../store/selectors/index";
-import { Loading, ModalSaccecfullyCompleted, ButtonOnSubmit } from "../ui";
+import {
+  Loading,
+  ModalSaccecfullyCompleted,
+  ButtonOnSubmit,
+  ButtonReturn,
+} from "../ui";
 import { schemaForValidationMeal } from "../ui/ValidationSchemes";
+import style from "./CreateMeal.module.css";
 
 const CreateMeal = () => {
   let { id } = useParams();
@@ -30,7 +36,6 @@ const CreateMeal = () => {
     resolver: yupResolver(schemaForValidationMeal),
   });
 
-  console.log(mealEdit);
   useEffect(() => {
     if (id && !mealEdit?.id) {
       dispatch(fetchOneMeal(id));
@@ -73,7 +78,11 @@ const CreateMeal = () => {
 
   return (
     <>
-      <div>
+      <div
+        className={`${style.form_meal_box} ${
+          isModalOpen ? style.transparent : ""
+        }`}
+      >
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label htmlFor="mealName">Meal</label>
@@ -82,12 +91,16 @@ const CreateMeal = () => {
           </div>
           <div>
             <label htmlFor="description">Description</label>
-            <input type="text" id="description" {...register("description")} />
+            <textarea
+              type="text"
+              id="description"
+              {...register("description")}
+            />
             <p> {errors.description?.message}</p>
           </div>
           <div>
             <label htmlFor="price">Price</label>
-            <input type="text" id="price" {...register("price")} />
+            <input id="price" {...register("price")} />
             <p> {errors.price?.message}</p>
           </div>
           <div>
@@ -95,20 +108,23 @@ const CreateMeal = () => {
             <input type="file" id="image" onChange={onFileChange} />
           </div>
         </form>
+        {mealEdit.image && (
+          <div className={style.img_meal_box}>
+            <img className={style.img_meal} src={mealEdit.image} alt="Meal" />
+          </div>
+        )}
+        <div
+          className={`${style.btn_create_return_meal_box} ${
+            isModalOpen ? style.btn_hidden : ""
+          }`}
+        >
+          <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
+          {!isModalOpen && (
+            <ButtonReturn closeModal={closeModal}>Return</ButtonReturn>
+          )}
+        </div>
       </div>
-      {mealEdit.image && (
-        <div>
-          <img src={mealEdit.image} alt="Meal" />
-        </div>
-      )}
-      <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
-
       {isModalOpen && <ModalSaccecfullyCompleted closeModal={closeModal} />}
-      {!isModalOpen && (
-        <div>
-          <button onClick={closeModal}>Return</button>
-        </div>
-      )}
     </>
   );
 };

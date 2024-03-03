@@ -1,0 +1,6 @@
+.about_box {
+    min-height: 200px;
+    /* border: 1px solid black; */
+    padding: 20px;
+    font-size: 18px;
+}

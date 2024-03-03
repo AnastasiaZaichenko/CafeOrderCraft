@@ -1,3 +1,38 @@
 * {
     box-sizing: border-box;
   }
+   
+input {
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 3px;
+  min-width: 100%;
+  font: inherit;
+}
+
+input:focus {
+  border-color: #c7d4b9;
+  outline: none; 
+  background-color: #f0f0f0;
+  color: #28211f;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); 
+}
+
+textarea {
+  border-radius: 5px;
+  border: 2px solid grey;
+  padding: 3px;
+  margin: 3px;
+  min-width: 100%;
+  font: inherit;
+}
+
+textarea:focus {
+  border-color: #c7d4b9;
+  outline: none; 
+  background-color: #f0f0f0;
+  color: #28211f;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); 
+}
+

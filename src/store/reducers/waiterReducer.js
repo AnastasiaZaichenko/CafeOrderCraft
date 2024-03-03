@@ -17,7 +17,7 @@ const initialState = {
   waiterEdit: DEFAULT_WAITER,
 };
 
-export default function waiterReducer(state = initialState, { type, payload }) {
+const waiterReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ACTION_SET_WAITER_LIST:
       return { ...state, list: payload };
@@ -43,4 +43,6 @@ export default function waiterReducer(state = initialState, { type, payload }) {
     default:
       return state;
   }
-}
+};
+
+export default waiterReducer;

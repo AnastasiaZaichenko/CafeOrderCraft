@@ -15,7 +15,7 @@ const initialState = {
   tableEdit: DEFAULT_TABLE,
 };
 
-export default function tableReducer(state = initialState, { type, payload }) {
+const tableReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ACTION_SET_TABLE_LIST:
       return {
@@ -50,4 +50,6 @@ export default function tableReducer(state = initialState, { type, payload }) {
     default:
       return state;
   }
-}
+};
+
+export default tableReducer;

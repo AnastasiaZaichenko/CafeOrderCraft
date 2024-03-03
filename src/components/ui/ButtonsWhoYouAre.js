@@ -1,16 +1,11 @@
 import style from "./ButtonsWhoYouAre.module.css";
 
-const ButtonsWhoYouAre = ({
-  onEmployeeBtn,
-  onGuestBtn,
-  isEmployee,
-  isGuest,
-}) => {
+const ButtonsWhoYouAre = ({ onEmployeeBtn, onGuestBtn, whoYouAre }) => {
   return (
     <div className={style.btn_whoYouAre_box}>
       <button
         onClick={onEmployeeBtn}
-        className={`${isEmployee ? style.isButtonActive : ""} ${
+        className={`${whoYouAre === "employee" ? style.isButtonActive : ""} ${
           style.btn_whoYouAre
         }`}
       >
@@ -18,7 +13,7 @@ const ButtonsWhoYouAre = ({
       </button>
       <button
         onClick={onGuestBtn}
-        className={`${isGuest ? style.isButtonActive : ""} ${
+        className={`${whoYouAre === "guest" ? style.isButtonActive : ""} ${
           style.btn_whoYouAre
         }`}
       >

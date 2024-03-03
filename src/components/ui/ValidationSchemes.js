@@ -22,6 +22,7 @@ export const schemaForValidationWaiter = yup.object().shape({
     .required("Phone number is a required field"),
 });
 
+const TEMPLATE_MEAL_PRICE = /^\d+(\.\d{2})?$/;
 export const schemaForValidationMeal = yup.object().shape({
   name: yup
     .string()
@@ -29,10 +30,14 @@ export const schemaForValidationMeal = yup.object().shape({
     .required("Meal is a required field"),
   description: yup
     .string()
-    .min(10, "Description should contain at least 100 characters")
+    .min(10, "Description should contain at least 10 characters")
     .required("Description is a required field"),
   price: yup
     .string()
-    .matches(/^\d+(\.\d{2})?$/, 'Amount must be in the format "9.00"')
+    .matches(TEMPLATE_MEAL_PRICE, 'Amount must be in the format "0.00"')
     .required("Price is a required field"),
+});
+
+export const schemaForValidationReview = yup.object().shape({
+  review: yup.string().max(10, "Review should contain maximum 300 characters"),
 });

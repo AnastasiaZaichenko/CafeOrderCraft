@@ -7,3 +7,4 @@ export { default as ButtonTakeaway } from "./ButtonTakeaway";
 export { default as NotFound } from "./NotFound";
 export { default as Loading } from "./Loading";
 export { default as ModalSaccecfullyCompleted } from "./ModalSaccecfullyCompleted";
+export { default as ButtonReturn } from "./ButtonReturn";

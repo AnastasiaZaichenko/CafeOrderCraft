@@ -11,29 +11,21 @@ const GetWaiters = () => {
   const list = useSelector(selectWaiter);
   const dispatch = useDispatch();
 
-  const [isEmployee, setIsEmployee] = useState(false);
-  const [isGuest, setIsGuest] = useState(false);
+  const [whoYouAre, setwhoYouAre] = useState("guest");
 
   useEffect(() => {
     dispatch(fetchWaiters());
   }, [dispatch]);
 
   const onEmployeeBtn = () => {
-    setIsEmployee(true);
-    setIsGuest(false);
+    setwhoYouAre("employee");
   };
   const onGuestBtn = () => {
-    setIsGuest(true);
-    setIsEmployee(false);
+    setwhoYouAre("guest");
   };
 
   const waiterList = list.map((waiter) => (
-    <WaiterItem
-      key={waiter.id}
-      waiter={waiter}
-      isEmployee={isEmployee}
-      isGuest={isGuest}
-    />
+    <WaiterItem key={waiter.id} waiter={waiter} whoYouAre={whoYouAre} />
   ));
 
   const clear = () => {
@@ -49,11 +41,10 @@ const GetWaiters = () => {
         <ButtonsWhoYouAre
           onEmployeeBtn={onEmployeeBtn}
           onGuestBtn={onGuestBtn}
-          isEmployee={isEmployee}
-          isGuest={isGuest}
+          whoYouAre={whoYouAre}
         />
-        {isGuest && <ButtonTakeaway />}
-        {isEmployee && (
+        {whoYouAre === "guest" && <ButtonTakeaway />}
+        {whoYouAre === "employee" && (
           <ButtonAddNewItem clear={clear} path={path} word={word} />
         )}
       </div>

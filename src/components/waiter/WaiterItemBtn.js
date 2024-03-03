@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { removeWaiter, clearWaiterEdit } from "../../store/actions/waiter";
 import { ButtonItemEditDel, ButtonItemAddToOrder } from "../ui";
 
-const WaiterItemBtn = ({ waiter, isEmployee, isGuest }) => {
+const WaiterItemBtn = ({ waiter, whoYouAre }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,13 +18,13 @@ const WaiterItemBtn = ({ waiter, isEmployee, isGuest }) => {
 
   return (
     <>
-      {isEmployee && (
+      {whoYouAre === "employee" && (
         <ButtonItemEditDel
           deleteBtn={deleteBtnWaiter}
           editBtn={editBtnWaiter}
         />
       )}
-      {isGuest && <ButtonItemAddToOrder />}
+      {whoYouAre === "guest" && <ButtonItemAddToOrder />}
     </>
   );
 };

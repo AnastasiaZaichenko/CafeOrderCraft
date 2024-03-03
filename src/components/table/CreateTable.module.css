@@ -1,0 +1,26 @@
+.form_table_box{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.btn_create_return_table_box{
+    display: flex;
+    gap:1px;
+    padding: 20px 20px 10px 20px;
+}
+
+.transparent {
+    opacity: 0.5; 
+  }
+
+.btn_hidden {
+    display: none;
+}
+
+.form_table_box p{
+    color: red;
+}

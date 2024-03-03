@@ -8,3 +8,5 @@ export const selectTableEdit = (state) => state.table.tableEdit;
 
 export const selectWaiter = (state) => state.waiter.list;
 export const selectWaiterEdit = (state) => state.waiter.waiterEdit;
+
+export const selectReviews = (state) => state.review.list;

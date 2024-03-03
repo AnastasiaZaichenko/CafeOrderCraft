@@ -1,6 +1,6 @@
 import { WaiterItemBtn } from "./";
 import style from "./WaiterItem.module.css";
-const WaiterItem = ({ waiter, isEmployee, isGuest }) => {
+const WaiterItem = ({ waiter, whoYouAre }) => {
   return (
     <li key={waiter.id} className={style.waiterList_box}>
       <div className={style.avatar_box}>
@@ -10,11 +10,7 @@ const WaiterItem = ({ waiter, isEmployee, isGuest }) => {
         <p>{waiter.firstName}</p>
         <p>{waiter.phone}</p>
       </div>
-      <WaiterItemBtn
-        waiter={waiter}
-        isEmployee={isEmployee}
-        isGuest={isGuest}
-      />
+      <WaiterItemBtn waiter={waiter} whoYouAre={whoYouAre} />
     </li>
   );
 };

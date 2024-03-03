@@ -1,0 +1,33 @@
+.form_waiter_box{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    align-items: center;
+    padding: 20px;
+}
+
+.btn_create_return_waiter_box{
+    display: flex;
+    gap:1px;
+    padding: 20px 20px 10px 20px;
+}
+.img_waiter_box{
+    max-width: 300px;
+    padding: 10px 10px 1px 10px;
+}
+
+.img_waiter{
+    max-width: 100%;
+}
+
+.transparent {
+    opacity: 0.5; 
+}
+
+.btn_hidden {
+    display: none;
+}
+
+.form_waiter_box p{
+    color: red;
+}

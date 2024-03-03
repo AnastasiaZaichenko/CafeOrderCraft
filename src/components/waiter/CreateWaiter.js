@@ -5,14 +5,21 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { save, fetchOneWaiter } from "../../store/actions/waiter";
 import { selectWaiterEdit } from "../../store/selectors";
-import { Loading, ModalSaccecfullyCompleted, ButtonOnSubmit } from "../ui";
+import {
+  Loading,
+  ModalSaccecfullyCompleted,
+  ButtonOnSubmit,
+  ButtonReturn,
+} from "../ui";
 import { schemaForValidationWaiter } from "../ui/ValidationSchemes";
+import style from "./CreateWaiter.module.css";
 const CreateWaiter = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const waiterEdit = useSelector(selectWaiterEdit);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [image, setImage] = useState(null);
 
   const {
     register,
@@ -37,14 +44,21 @@ const CreateWaiter = () => {
     if (waiterEdit?.firstName !== undefined) {
       setValue("firstName", waiterEdit.firstName);
       setValue("phone", waiterEdit.phone);
+      setImage(waiterEdit.image);
     }
-  }, [waiterEdit, setValue]);
+  }, [waiterEdit, setValue, waiterEdit.image]);
+
+  const onAvaChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setImage(selectedFile);
+  };
 
   const onSubmit = (data) => {
     const waiter = {
       ...waiterEdit,
       firstName: data.firstName,
       phone: data.phone,
+      image,
     };
     dispatch(save(waiter));
     setIsModalOpen(true);
@@ -60,27 +74,51 @@ const CreateWaiter = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="firstName">Name</label>
-          <input id="firstName" type="text" {...register("firstName")} />
-          <p> {errors.firstName?.message}</p>
+    <>
+      <div
+        className={`${style.form_waiter_box} ${
+          isModalOpen ? style.transparent : ""
+        }`}
+      >
+        {waiterEdit.image && (
+          <div className={style.img_waiter_box}>
+            <img
+              className={style.img_waiter}
+              src={waiterEdit.image}
+              alt="Meal"
+            />
+          </div>
+        )}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <label htmlFor="firstName">Name</label>
+            <input id="firstName" type="text" {...register("firstName")} />
+            <p> {errors.firstName?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="phone">Phone</label>
+            <input id="phone" type="text" {...register("phone")} />
+            <p> {errors.phone?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="image">Add a photo:</label>
+            <input type="file" id="image" onChange={onAvaChange} />
+          </div>
+        </form>
+
+        <div
+          className={`${style.btn_create_return_table_box} ${
+            isModalOpen ? style.btn_hidden : ""
+          }`}
+        >
+          <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
+          {!isModalOpen && (
+            <ButtonReturn closeModal={closeModal}>Return</ButtonReturn>
+          )}
         </div>
-        <div>
-          <label htmlFor="phone">Phone</label>
-          <input id="phone" type="text" {...register("phone")} />
-          <p> {errors.phone?.message}</p>
-        </div>
-      </form>
-      <ButtonOnSubmit onSubmit={handleSubmit(onSubmit)} />
+      </div>
       {isModalOpen && <ModalSaccecfullyCompleted closeModal={closeModal} />}
-      {!isModalOpen && (
-        <div>
-          <button onClick={closeModal}>Return</button>
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 export default CreateWaiter;

@@ -10,8 +10,7 @@ const GetMeals = () => {
   const list = useSelector(selectMeals);
   const dispatch = useDispatch();
 
-  const [isEmployee, setIsEmployee] = useState(false);
-  const [isGuest, setIsGuest] = useState(false);
+  const [whoYouAre, setwhoYouAre] = useState("guest");
 
   useEffect(() => {
     dispatch(fetchMeals());
@@ -22,21 +21,14 @@ const GetMeals = () => {
   };
 
   const onEmployeeBtn = () => {
-    setIsEmployee(true);
-    setIsGuest(false);
+    setwhoYouAre("employee");
   };
   const onGuestBtn = () => {
-    setIsGuest(true);
-    setIsEmployee(false);
+    setwhoYouAre("guest");
   };
 
   const mealList = list.map((meal) => (
-    <MealItem
-      key={meal.id}
-      meal={meal}
-      isEmployee={isEmployee}
-      isGuest={isGuest}
-    />
+    <MealItem key={meal.id} meal={meal} whoYouAre={whoYouAre} />
   ));
 
   const path = "/order-craft/meal/create";
@@ -47,11 +39,12 @@ const GetMeals = () => {
       <ButtonsWhoYouAre
         onEmployeeBtn={onEmployeeBtn}
         onGuestBtn={onGuestBtn}
-        isEmployee={isEmployee}
-        isGuest={isGuest}
+        whoYouAre={whoYouAre}
       />
 
-      {isEmployee && <ButtonAddNewItem clear={clear} path={path} word={word} />}
+      {whoYouAre === "employee" && (
+        <ButtonAddNewItem clear={clear} path={path} word={word} />
+      )}
 
       <ul className={style.meal_list}>{mealList}</ul>
     </>

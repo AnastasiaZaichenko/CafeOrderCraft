@@ -1,6 +1,6 @@
 import { MealItemBtn } from "./";
 import style from "./MealItem.module.css";
-const MealItem = ({ meal, isEmployee, isGuest }) => {
+const MealItem = ({ meal, whoYouAre }) => {
   return (
     <li key={meal.id} className={style.meal_item}>
       <div className={style.meal_img_box}>
@@ -11,7 +11,7 @@ const MealItem = ({ meal, isEmployee, isGuest }) => {
         <p>{meal.description}</p>
         <p>{meal.price}</p>
       </div>
-      <MealItemBtn meal={meal} isEmployee={isEmployee} isGuest={isGuest} />
+      <MealItemBtn meal={meal} whoYouAre={whoYouAre} />
     </li>
   );
 };

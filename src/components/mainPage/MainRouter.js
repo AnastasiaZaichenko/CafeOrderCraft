@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import { About } from "../about";
+import { Reviews } from "../reviews";
 import { MealRouter } from "../meal";
 import { TableRouter } from "../table";
 import { WaiterRouter } from "../waiter";
@@ -37,12 +39,37 @@ const MainRouter = () => {
           ))}
         </ul>
       </nav>
+      {activeItem === null ? (
+        <div>
+          {/* <div>
+            <div>
+              <div>Dish of the day</div>
+            </div>
+            <div>
+              <button>Buy fast</button>
+            </div>
+          </div>
+          <div>Еhe best waiter of the month</div> */}
+          <div>
+            <About />
+          </div>
+          <div>
+            <Reviews />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
 
       <Routes>
         {/* <Route path="/" element={<MainRouter />} /> */}
         <Route path="/meal/*" element={<MealRouter />} />
         <Route path="/table/*" element={<TableRouter />} />
         <Route path="/waiter/*" element={<WaiterRouter />} />
+        {/* <Route path="/mealOfTheDay/*" element={<WaiterRouter />} />
+        <Route path="/waiterOfTheMonth/*" element={<WaiterRouter />} /> */}
+        {/* <Route path="/about/*" element={<About />} /> */}
+        {/* <Route path="/reviews/*" element={<WaiterRouter />} /> */}
         {/* <Route path="/*" element={<NotFound />} /> */}
         {/* <Route path="/order/*" element={<OrderRouter />} /> */}
       </Routes>

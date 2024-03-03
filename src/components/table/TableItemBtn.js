@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeTable, clearTableEdit } from "../../store/actions/table";
 import { ButtonItemEditDel, ButtonItemAddToOrder } from "../ui";
 
-const TableItemBtn = ({ table, isEmployee, isGuest }) => {
+const TableItemBtn = ({ table, whoYouAre }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,10 +18,10 @@ const TableItemBtn = ({ table, isEmployee, isGuest }) => {
 
   return (
     <>
-      {isEmployee && (
+      {whoYouAre === "employee" && (
         <ButtonItemEditDel deleteBtn={deleteBtnTable} editBtn={editBtnTable} />
       )}
-      {isGuest && <ButtonItemAddToOrder />}
+      {whoYouAre === "guest" && <ButtonItemAddToOrder />}
     </>
   );
 };

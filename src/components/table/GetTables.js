@@ -9,30 +9,21 @@ import style from "./GetTables.module.css";
 const GetTables = () => {
   const list = useSelector(selectTables);
   const dispatch = useDispatch();
-
-  const [isEmployee, setIsEmployee] = useState(false);
-  const [isGuest, setIsGuest] = useState(false);
+  const [whoYouAre, setwhoYouAre] = useState("guest");
 
   useEffect(() => {
     dispatch(fetchTables());
   }, [dispatch]);
 
   const onEmployeeBtn = () => {
-    setIsEmployee(true);
-    setIsGuest(false);
+    setwhoYouAre("employee");
   };
   const onGuestBtn = () => {
-    setIsGuest(true);
-    setIsEmployee(false);
+    setwhoYouAre("guest");
   };
 
   const tableList = list.map((table) => (
-    <TableItem
-      key={table.id}
-      table={table}
-      isEmployee={isEmployee}
-      isGuest={isGuest}
-    />
+    <TableItem key={table.id} table={table} whoYouAre={whoYouAre} />
   ));
 
   const clear = () => {
@@ -48,12 +39,11 @@ const GetTables = () => {
         <ButtonsWhoYouAre
           onEmployeeBtn={onEmployeeBtn}
           onGuestBtn={onGuestBtn}
-          isEmployee={isEmployee}
-          isGuest={isGuest}
+          whoYouAre={whoYouAre}
         />
-        {isGuest && <ButtonTakeaway />}
+        {whoYouAre === "guest" && <ButtonTakeaway />}
 
-        {isEmployee && (
+        {whoYouAre === "employee" && (
           <ButtonAddNewItem clear={clear} path={path} word={word} />
         )}
       </div>

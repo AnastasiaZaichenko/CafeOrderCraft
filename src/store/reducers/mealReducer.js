@@ -18,7 +18,7 @@ const initialState = {
   mealEdit: DEFAULT_MEAL,
 };
 
-export default function mealReducer(state = initialState, { type, payload }) {
+const mealReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ACTION_SET_MEAL_LIST:
       return {
@@ -46,4 +46,5 @@ export default function mealReducer(state = initialState, { type, payload }) {
     default:
       return state;
   }
-}
+};
+export default mealReducer;
