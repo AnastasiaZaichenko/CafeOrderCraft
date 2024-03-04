@@ -21,7 +21,7 @@ const TableItemBtn = ({ table, whoYouAre }) => {
       {whoYouAre === "employee" && (
         <ButtonItemEditDel deleteBtn={deleteBtnTable} editBtn={editBtnTable} />
       )}
-      {whoYouAre === "guest" && <ButtonItemAddToOrder />}
+      {whoYouAre === "guest" && <ButtonItemAddToOrder item={table} />}
     </>
   );
 };

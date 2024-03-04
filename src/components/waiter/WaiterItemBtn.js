@@ -24,7 +24,7 @@ const WaiterItemBtn = ({ waiter, whoYouAre }) => {
           editBtn={editBtnWaiter}
         />
       )}
-      {whoYouAre === "guest" && <ButtonItemAddToOrder />}
+      {whoYouAre === "guest" && <ButtonItemAddToOrder item={waiter} />}
     </>
   );
 };

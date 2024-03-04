@@ -19,7 +19,7 @@ const MealItemBtn = ({ meal, whoYouAre }) => {
       {whoYouAre === "employee" && (
         <ButtonItemEditDel deleteBtn={deleteBtnMeal} editBtn={editBtnMeal} />
       )}
-      {whoYouAre === "guest" && <ButtonItemAddToOrder />}
+      {whoYouAre === "guest" && <ButtonItemAddToOrder item={meal} />}
     </>
   );
 };
