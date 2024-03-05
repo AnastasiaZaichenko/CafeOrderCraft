@@ -7,8 +7,6 @@ function App() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/order-craft/*" element={<MainRouter />} />
-      {/* <Route path="/review/*" element={< />} />
-      <Route path="/about/*" element={< />} /> */}
     </Routes>
   );
 }

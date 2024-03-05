@@ -3,15 +3,11 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-}
-  
+} 
 
 .btn_addNewItem {
     padding: 5px 25px;
-    /* border: 1px solid #c7d4b9;
-    border-radius: 3px;
-    color:#c7d4b9; */
-       border: 1px solid  #28211f;
+    border: 1px solid  #28211f;
     color: #28211f;
     border-radius: 3px;
     background-color: white;

@@ -1,8 +1,13 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { BasketContext } from "../../utils/BasketContextProvider.js";
 import bill from "./images/bill.png";
-const BasketTotal = (name) => {
-  const { basket } = useContext(BasketContext);
+import style from "./BasketTotal.module.css";
+
+const BasketTotal = () => {
+  const { basket, isTakeaway } = useContext(BasketContext);
+  const navigate = useNavigate();
+
   const totalBill = basket
     .reduce((total, item) => {
       if (item.hasOwnProperty("price")) {
@@ -12,23 +17,37 @@ const BasketTotal = (name) => {
     }, 0)
     .toFixed(1);
 
-  const item = basket.map((item, index) => (
-    <div key={index}>
-      <span>{item.number}</span>
-      <span>{item.firstName}</span>
-    </div>
+  const waiter = basket.map((item, index) => (
+    <span key={index}>{item.firstName}</span>
   ));
+  const table = basket.map((item, index) => (
+    <span key={index}>{item.number}</span>
+  ));
+
+  const returnHome = () => {
+    navigate("/");
+  };
+
   return (
-    <>
+    <div className={style.pay_box}>
       <div>
         <img src={bill} alt="Bill" />
       </div>
-      <div>{item}</div>
-      <div>{totalBill}</div>
-      <div>
-        <button>Click to pay</button>
+      {!isTakeaway ? (
+        <div className={style.pay_item}>
+          <div>Table: {table}</div>
+          <div>Asisstance: {waiter}</div>
+        </div>
+      ) : (
+        <div>Takeaway</div>
+      )}
+      <p>{totalBill} $</p>{" "}
+      <div className={style.btnPay_box}>
+        <button className={style.btnPay} onClick={returnHome}>
+          Click to pay
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 

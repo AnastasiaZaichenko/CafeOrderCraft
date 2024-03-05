@@ -1,5 +1,3 @@
-// import { createSelector } from "reselect";
-
 export const selectMeals = (state) => state.meal.list;
 export const selectEditMeal = (state) => state.meal.mealEdit;
 

@@ -13,6 +13,7 @@ import {
 } from "../ui";
 import { schemaForValidationWaiter } from "../ui/ValidationSchemes";
 import style from "./CreateWaiter.module.css";
+
 const CreateWaiter = () => {
   let { id } = useParams();
   const dispatch = useDispatch();

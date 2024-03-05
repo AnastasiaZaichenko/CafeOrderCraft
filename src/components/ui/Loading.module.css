@@ -16,6 +16,7 @@
     background-size: 12px 12px;
     animation: l12 1s infinite;
   }
+  
   .loader::before {
     margin: 4px;
     filter: hue-rotate(45deg);

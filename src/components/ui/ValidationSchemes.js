@@ -11,13 +11,13 @@ export const TEMPLATE_WAITER_NAME = /^\d{3}-\d{3}-\d{4}$/;
 export const schemaForValidationWaiter = yup.object().shape({
   firstName: yup
     .string()
-    .matches(/^[a-zA-Z]{2,}$/, "Name should contain at least two Latin letters")
+    .matches(/^[a-zA-Z]{2,}$/, "Name should contain at least 2 Latin letters")
     .required("Name is a required field"),
   phone: yup
     .string()
     .matches(
       TEMPLATE_WAITER_NAME,
-      "Phone number should be in the format XXX-XXX-XXXX"
+      "Phone number must be in the format XXX-XXX-XXXX"
     )
     .required("Phone number is a required field"),
 });
@@ -39,5 +39,8 @@ export const schemaForValidationMeal = yup.object().shape({
 });
 
 export const schemaForValidationReview = yup.object().shape({
-  review: yup.string().max(10, "Review should contain maximum 300 characters"),
+  review: yup
+    .string()
+    .max(300, "The review should contain maximum 300 characters")
+    .min(1, "The review should contain at least 1 character"),
 });

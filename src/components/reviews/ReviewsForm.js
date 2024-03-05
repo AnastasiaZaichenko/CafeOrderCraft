@@ -6,6 +6,7 @@ import { schemaForValidationReview } from "../ui/ValidationSchemes";
 import { save } from "../../store/actions/review";
 import warning from "./images/warning.png";
 import style from "./ReviewsForm.module.css";
+
 const ReviewsForm = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);

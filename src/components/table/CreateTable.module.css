@@ -6,7 +6,6 @@
     padding: 20px;
 }
 
-
 .btn_create_return_table_box{
     display: flex;
     gap:1px;
@@ -15,7 +14,7 @@
 
 .transparent {
     opacity: 0.5; 
-  }
+}
 
 .btn_hidden {
     display: none;

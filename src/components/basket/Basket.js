@@ -1,10 +1,23 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import { BasketContext } from "../../utils/BasketContextProvider.js";
+import BasketTotal from "./BasketTotal.js";
+import style from "./Basket.module.css";
 
 const Basket = () => {
-  const { basket } = useContext(BasketContext);
-  console.log(basket);
+  const { basket, isTakeaway, removeFromBasket } = useContext(BasketContext);
+  const [isModalBillOpen, setIsModalBillOpen] = useState(false);
+  const totalBill = basket
+    .reduce((total, item) => {
+      if (item.hasOwnProperty("price")) {
+        return total + parseFloat(item.price);
+      }
+      return total;
+    }, 0)
+    .toFixed(1);
+
+  const deleteItem = (index) => {
+    removeFromBasket(index);
+  };
 
   const items = basket
     .filter(
@@ -12,37 +25,51 @@ const Basket = () => {
     )
     .map((item, index) => (
       <div key={index}>
-        <span> Name: {item.name}</span>
-        <span> Price: {item.price}</span>
+        <button
+          onClick={() => deleteItem(index)}
+          className={style.basketMeal_btn_del}
+        >
+          Del
+        </button>
+        <span> {item.name}</span>
+        <span> {item.price}</span>
       </div>
     ));
 
   const tables = basket
     .filter((item) => item.hasOwnProperty("number"))
-    .map((item, index) => (
-      <div key={index}>
-        <span> Table №{item.number}</span>
-      </div>
-    ));
+    .map((item, index) => <p key={index}>Table: {item.number}</p>);
 
   const waiters = basket
     .filter((item) => item.hasOwnProperty("firstName"))
-    .map((item, index) => (
-      <div key={index}>
-        <span> Asisstance{item.firstName}</span>
-      </div>
-    ));
+    .map((item, index) => <p key={index}>Asisstance: {item.firstName}</p>);
+
+  const btnBillPayment = () => {
+    setIsModalBillOpen(true);
+  };
   return (
-    <>
-      <div>{items.length > 0 ? items : <p>No items in the basket</p>}</div>
-      <div>{tables.length > 0 ? tables : <p>Choose a Table</p>}</div>
-      <div>{tables.length > 0 ? waiters : <p>Choose an Asisstance</p>}</div>
-      <div>
-        <button>
-          <Link to={"/order-craft/basket/bill"}>Bill </Link>
-        </button>
+    <div className={style.basket_box}>
+      <div className={style.basket_serve_box}>
+        {!isTakeaway ? (
+          <div className={style.basket_takeaway_box}>
+            {tables.length > 0 ? tables : <p>Choose a Table</p>}
+            {waiters.length > 0 ? waiters : <p>Choose an Asisstance</p>}
+          </div>
+        ) : (
+          <div>Takeaway</div>
+        )}
       </div>
-    </>
+      <div className={style.basket_total_box}>
+        {items.length > 0 ? items : <p>No items in the basket</p>}
+        <div className={style.basket_total}>Total {totalBill} $</div>
+        <div className={style.basket_total_btn_box}>
+          <button className={style.basket_total_btn} onClick={btnBillPayment}>
+            Get your bill
+          </button>
+        </div>
+        {isModalBillOpen ? <BasketTotal /> : ""}
+      </div>
+    </div>
   );
 };
 

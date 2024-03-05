@@ -1,5 +1,11 @@
+.meal_list {
+     display: flex;
+    flex-direction: column;
+    flex-direction: column-reverse
+}
+
 .meal_list li:nth-child(even) {
     background-color: rgba(199, 212, 185, 0.5); 
-
 } 
+
 

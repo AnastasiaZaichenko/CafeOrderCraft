@@ -1,4 +1,5 @@
 import style from "./ButtonItemEditDel.module.css";
+
 const ButtonItemEditDel = ({ editBtn, deleteBtn }) => {
   return (
     <div className={style.btn_ed_del_box}>

@@ -1,11 +1,12 @@
 .nav_box{
     background-color: #c7d4b9;
 }
+
 .nav_list{
     display: flex;
     justify-content: space-between;
-
 }
+
 .nav_item{
     flex: 1; 
     text-align: center;
@@ -21,24 +22,4 @@
     border-top: 1px solid  #c7d4b9;
     border-left: 1px solid  #c7d4b9;
     border-right: 1px solid  #c7d4b9;
-
 }
-
-/* .nav_box::after{
-    position: relative;
-    width: 70%;
-    margin: 0 auto;
-    background-image: url('./images/mainPage.jpg');
-    background-color: #c7d4b9;
-    background-size: cover; 
- background-position: center;
-    background-repeat: no-repeat;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 90%;
-    z-index: -1;
-} */

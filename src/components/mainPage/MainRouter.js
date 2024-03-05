@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { About } from "../about";
@@ -25,7 +25,7 @@ const MainRouter = () => {
     { label: "Choose meals", path: "/order-craft/meal" },
     { label: "Reserve a Table", path: "/order-craft/table" },
     { label: "Service Assistance", path: "/order-craft/waiter" },
-    { label: `Basket ${counter}`, path: "/order-craft/basket" },
+    { label: `Basket: ${counter}`, path: "/order-craft/basket" },
   ];
 
   return (

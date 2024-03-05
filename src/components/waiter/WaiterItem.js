@@ -1,5 +1,6 @@
 import { WaiterItemBtn } from "./";
 import style from "./WaiterItem.module.css";
+
 const WaiterItem = ({ waiter, whoYouAre }) => {
   return (
     <li key={waiter.id} className={style.waiterList_box}>

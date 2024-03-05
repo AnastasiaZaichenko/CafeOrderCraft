@@ -1,5 +1,6 @@
 import { MealItemBtn } from "./";
 import style from "./MealItem.module.css";
+
 const MealItem = ({ meal, whoYouAre }) => {
   return (
     <li key={meal.id} className={style.meal_item}>

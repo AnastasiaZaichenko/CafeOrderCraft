@@ -1,0 +1,65 @@
+.basket_box{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.basket_serve_box{
+    padding: 10px;
+    font-weight: 600;
+}
+
+.basket_serve_box p{
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.basket_total_box{
+    flex: 1;
+    padding: 10px;
+}
+
+
+
+.basket_total_box div{
+    padding-bottom: 10px;
+}
+
+.basket_total{
+    margin: 20px 20px 20px 0;
+    padding-top: 10px;
+    font-size: large;
+    font-weight: 900;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.basket_total_btn {
+    padding: 5px 30px;
+    border: 1px solid #28211f;
+    color: #28211f;
+    border-radius: 3px;
+    background-color: #c7d4b9;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+
+}
+.basket_total_btn a {
+    font-size: 18px;
+}
+
+.basket_total_btn:hover {
+    background-color: white;
+}
+
+.basketMeal_btn_del{
+    border: 1px solid  #28211f;
+    color: #28211f;
+    border-radius: 3px;
+    background-color: white;
+    margin-right: 5px;
+}
+
+.basketMeal_btn_del:hover{
+    background-color: #28211f;
+    color: white;
+    border: 1px solid  white
+ }

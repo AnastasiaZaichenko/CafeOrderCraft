@@ -1,4 +1,5 @@
 import style from "./ModalSaccecfullyCompleted.module.css";
+
 const ModalSaccecfullyCompleted = ({ closeModal }) => {
   return (
     <div className={style.moduleWindow_box}>

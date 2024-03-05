@@ -23,7 +23,6 @@
     list-style: none;
     display: flex;
     padding: 10px;
-    
 }
 
 .item_img_box {
@@ -33,14 +32,10 @@
 .item_text_box{
     padding: 20px;
 }
+
 .item_text_name{
     font-weight: 600;
 }
 
-
-
-.item_img {
-
-}
 
 
