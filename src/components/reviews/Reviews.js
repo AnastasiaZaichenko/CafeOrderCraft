@@ -4,6 +4,7 @@ import { ReviewsForm } from "./";
 import { selectReviews } from "../../store/selectors/index";
 import { fetchReviews } from "../../store/actions/review";
 import style from "./Reviews.module.css";
+
 const Reviews = () => {
   const list = useSelector(selectReviews);
   const dispatch = useDispatch();

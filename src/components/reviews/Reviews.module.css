@@ -11,6 +11,11 @@
     flex-direction: column-reverse;
 }
 
+@media screen and (max-width: 446px) {
+    .reviews_box li  {
+        flex-direction: column;
+    }
+}
 
 .reviews_box li {
     background-color: #f0f0f0;

@@ -9,18 +9,25 @@
 
 .btn_create_return_meal_box{
     display: flex;
-    /* flex-direction: column; */
     gap:1px;
     padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .btn_create_return_meal_box {
+     flex-direction: column;
+    }
 }
 
 .img_meal_box{
     max-width: 300px;
     padding: 10px 10px 1px 10px;
 }
+
 .img_meal{
     max-width: 100%;
 }
+
 .transparent {
     opacity: 0.5; 
 }

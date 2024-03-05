@@ -5,14 +5,20 @@
     align-items: center;
     position: absolute;
   }
-  
+
 .arrow {
-    width: 15px;
-    height: 15px;
-    border: 6px solid;
-    border-color:  #28211f transparent transparent #28211f;
-    transform: rotate(-45deg);
+  width: 15px;
+  height: 15px;
+  border: 6px solid;
+  border-color: #28211f transparent transparent #28211f;
+  transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+  .arrow {
+    display: none;
   }
+}
   
 .arrowSliding {
     position: absolute;

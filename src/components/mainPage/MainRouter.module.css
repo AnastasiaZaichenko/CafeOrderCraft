@@ -6,6 +6,11 @@
     display: flex;
     justify-content: space-between;
 }
+@media screen and (max-width: 768px) {
+    .nav_list a {
+     font-size: 18px;
+    }
+}
 
 .nav_item{
     flex: 1; 

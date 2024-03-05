@@ -15,7 +15,7 @@ const WaiterItemBtn = ({ waiter, whoYouAre }) => {
     navigate(`/order-craft/waiter/${waiter.id}/edit`);
     dispatch(clearWaiterEdit());
   };
-
+  const btnAddName = "Choose for your order";
   return (
     <>
       {whoYouAre === "employee" && (
@@ -24,7 +24,9 @@ const WaiterItemBtn = ({ waiter, whoYouAre }) => {
           editBtn={editBtnWaiter}
         />
       )}
-      {whoYouAre === "guest" && <ButtonItemAddToOrder item={waiter} />}
+      {whoYouAre === "guest" && (
+        <ButtonItemAddToOrder item={waiter} btnAddName={btnAddName} />
+      )}
     </>
   );
 };

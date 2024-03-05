@@ -15,13 +15,15 @@ const TableItemBtn = ({ table, whoYouAre }) => {
     navigate(`/order-craft/table/${table.id}/edit`);
     dispatch(clearTableEdit());
   };
-
+  const btnAddName = "Add to your order";
   return (
     <>
       {whoYouAre === "employee" && (
         <ButtonItemEditDel deleteBtn={deleteBtnTable} editBtn={editBtnTable} />
       )}
-      {whoYouAre === "guest" && <ButtonItemAddToOrder item={table} />}
+      {whoYouAre === "guest" && (
+        <ButtonItemAddToOrder item={table} btnAddName={btnAddName} />
+      )}
     </>
   );
 };

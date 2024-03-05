@@ -5,6 +5,13 @@
     padding: 40px;
 }
 
+@media screen and (max-width: 768px) {
+    .meal_item {
+      flex-direction: column;
+      gap:0
+    }
+}
+
 .meal_box {
     padding: 0 40px;
     display: flex;

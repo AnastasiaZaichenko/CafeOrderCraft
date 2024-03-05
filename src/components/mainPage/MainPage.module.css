@@ -31,8 +31,16 @@ a {
     align-items: center;    
 }
 
+@media screen and (max-width: 768px) {
+    .main_item {
+        justify-content: center;
+        padding: 20px 
+    }
+}
+
 ul {
     padding: 0;
+    display: flex;
 }
 
 .main_item::after{

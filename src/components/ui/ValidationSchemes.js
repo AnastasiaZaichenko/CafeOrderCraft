@@ -1,5 +1,5 @@
 import * as yup from "yup";
-const TEMPLATE_TABLE_NUMBER = /^[1-9][0-9]?$/;
+export const TEMPLATE_TABLE_NUMBER = /^[1-9][0-9]?$/;
 export const schemaForValidationTable = yup.object().shape({
   number: yup
     .string()
@@ -22,7 +22,7 @@ export const schemaForValidationWaiter = yup.object().shape({
     .required("Phone number is a required field"),
 });
 
-const TEMPLATE_MEAL_PRICE = /^\d+(\.\d{2})?$/;
+export const TEMPLATE_MEAL_PRICE = /^\d+(\.\d{2})?$/;
 export const schemaForValidationMeal = yup.object().shape({
   name: yup
     .string()

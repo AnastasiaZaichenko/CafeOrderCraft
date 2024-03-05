@@ -15,12 +15,16 @@ const MealItemBtn = ({ meal, whoYouAre }) => {
     navigate(`/order-craft/meal/${meal.id}/edit`);
     dispatch(clearTableEdit());
   };
+
+  const btnAddName = "Add to your order";
   return (
     <>
       {whoYouAre === "employee" && (
         <ButtonItemEditDel deleteBtn={deleteBtnMeal} editBtn={editBtnMeal} />
       )}
-      {whoYouAre === "guest" && <ButtonItemAddToOrder item={meal} />}
+      {whoYouAre === "guest" && (
+        <ButtonItemAddToOrder item={meal} btnAddName={btnAddName} />
+      )}
     </>
   );
 };

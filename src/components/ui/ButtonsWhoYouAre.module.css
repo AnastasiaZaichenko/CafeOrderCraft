@@ -5,6 +5,12 @@
     gap:20px;
 }
 
+@media screen and (max-width: 768px) {
+    .btn_whoYouAre_box {
+      flex-direction: column;
+    }
+}
+
 .btn_whoYouAre{
     flex:1;
     padding: 5px 20px;
